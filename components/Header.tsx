@@ -8,6 +8,7 @@ import {
   } from '@clerk/nextjs'
   import Image from 'next/image'
 import { Button } from './ui/button'
+import HeaderMenu from './HeaderMenu'
 export default function Header() {
   return (
     <header className='sticky inset-x-0 top-0 z-30 w-full transition-all'>
@@ -24,8 +25,10 @@ export default function Header() {
             </SignUpButton>
           </SignedOut>
           <SignedIn>
+          <HeaderMenu/>
             <UserButton />
           </SignedIn>
+
       </div>
         </div>
         </div>
