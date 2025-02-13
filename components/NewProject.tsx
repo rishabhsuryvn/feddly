@@ -27,14 +27,14 @@ export default function NewProject() {
         <DialogHeader>
           <DialogTitle>New Project</DialogTitle>
           <DialogDescription>
-            Create a new project to get started.
+            Create a new project to get started
           </DialogDescription>
         </DialogHeader>
         <form className="flex gap-4 flex-col" action={createProject}>
           <div className="grid sm:grid-cols-2 gap-4">
             <div className="flex flex-col gap-2">
               <Label htmlFor="name">Name</Label>
-              <Input id="name" name="name" placeholder="Project name" required />
+              <Input id="name" name="name" placeholder="Project Name" />
             </div>
             <div className="flex flex-col gap-2">
               <Label htmlFor="url">URL</Label>
@@ -43,12 +43,13 @@ export default function NewProject() {
           </div>
           <div className="flex flex-col gap-2">
             <Label htmlFor="description">Description</Label>
-            <Textarea name="description" id="description" placeholder="Description (optional)"></Textarea>
+            <Textarea
+              name="description"
+              id="description"
+              placeholder="Description (optional)"
+            />
           </div>
-          <div className="flex items-center justify-center">
-          <SubmitButton/>
-          </div>
-         
+          <SubmitButton />{" "}
         </form>
       </DialogContent>
     </Dialog>

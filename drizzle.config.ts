@@ -1,5 +1,5 @@
 import { defineConfig } from "drizzle-kit";
-import './envConfig'
+import "./envConfig";
 
 export default defineConfig({
   schema: "./db/schema.ts",
@@ -7,7 +7,7 @@ export default defineConfig({
   migrations: {
     prefix: "supabase",
   },
-  dbCredentials:{
+  dbCredentials: {
     url: process.env.DATABASE_URL!,
-  }
-})
+  },
+});

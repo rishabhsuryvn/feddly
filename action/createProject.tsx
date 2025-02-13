@@ -1,6 +1,6 @@
-'use server';
+"use server";
 import { db } from "@/db";
-import { auth, currentUser } from "@clerk/nextjs/server";
+import { auth } from "@clerk/nextjs/server";
 import { projects } from "@/db/schema";
 import { redirect } from "next/navigation";
 
@@ -12,15 +12,13 @@ export async function createProject(formData: FormData) {
     description: formData.get("description") as string,
     url: formData.get("url") as string,
     userId,
-  }
+  };
 
- console.log(JSON.stringify(project))
-  const [newProjectId] = await db.insert(projects).values(project).returning({ insertedId: projects.id })
+  console.log(JSON.stringify(project));
+  const [newProjectId] = await db
+    .insert(projects)
+    .values(project)
+    .returning({ insertedId: projects.id });
 
-   return newProjectId.insertedId
-
-   redirect(`/projects/${newProjectId.insertedId}/instructions`);
-
-    
+  redirect(`/projects/${newProjectId.insertedId}/instructions`);
 }
-

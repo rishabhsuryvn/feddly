@@ -3,23 +3,23 @@ import {
   SignInButton,
   SignedIn,
   SignedOut,
-  UserButton
-} from '@clerk/nextjs'
-import './globals.css'
-import Header from '@/components/Header'
+  UserButton,
+} from "@clerk/nextjs";
+import "./globals.css";
+import Header from "@/components/Header";
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
     <ClerkProvider>
       <html lang="en">
         <body>
-          <Header/> 
+          <Header />
           {children}
         </body>
       </html>
     </ClerkProvider>
-  )
+  );
 }
