@@ -21,9 +21,11 @@ export default function HeaderMenu() {
   return (
     <DropdownMenu open={open} onOpenChange={toggleMenu}>
       <DropdownMenuTrigger>
-        <Button onClick={toggleMenu} className="mr-4" variant="secondary">
-          {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </Button>
+        <div>
+          <Button onClick={toggleMenu} className="mr-4" variant="secondary">
+            {open ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+        </div>
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
         <DropdownMenuItem asChild>

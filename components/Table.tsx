@@ -1,6 +1,7 @@
 "use client";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import Ratings from "@/components/Ratings";
 import {
   Column,
   ColumnDef,
@@ -22,6 +23,7 @@ import {
   ChevronsLeft,
   ChevronsRight,
 } from "lucide-react";
+import Rating from "./Ratings";
 
 type Feedback = InferSelectModel<typeof feedbacks>;
 function Table(props: { data: Feedback[] }) {
@@ -43,6 +45,18 @@ function Table(props: { data: Feedback[] }) {
         footer: (props) => props.column.id,
       },
       {
+        accessorFn: (row) => row.rating,
+        id: "rating",
+        cell: (info) =>
+          info.getValue() === null ? (
+            <span>N/A</span>
+          ) : (
+            <Ratings rating={info.getValue() as number} count={5} />
+          ),
+        header: () => <span>Rating</span>,
+        footer: (props) => props.column.id,
+      },
+      {
         accessorKey: "message",
         header: () => "Message",
         footer: (props) => props.column.id,
@@ -51,7 +65,7 @@ function Table(props: { data: Feedback[] }) {
         maxSize: 600,
       },
     ],
-    [],
+    []
   );
 
   return (
@@ -119,7 +133,7 @@ function MyTable({
                     >
                       {flexRender(
                         header.column.columnDef.header,
-                        header.getContext(),
+                        header.getContext()
                       )}
                       {{
                         asc: " 🔼",
@@ -152,7 +166,7 @@ function MyTable({
                     >
                       {flexRender(
                         cell.column.columnDef.cell,
-                        cell.getContext(),
+                        cell.getContext()
                       )}
                     </td>
                   );
@@ -192,13 +206,10 @@ function MyTable({
         >
           <ChevronsRight />
         </button>
-
         <span className="flex items-center gap-1">
           | Go to page:
           <input
             type="number"
-            min="1"
-            max={table.getPageCount()}
             defaultValue={table.getState().pagination.pageIndex + 1}
             onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
@@ -223,7 +234,6 @@ function MyTable({
     </div>
   );
 }
-
 function Filter({
   column,
   table,
