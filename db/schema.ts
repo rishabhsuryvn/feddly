@@ -34,5 +34,5 @@ export const subscriptions = pgTable("subscriptions", {
   userId: varchar("user_id"),
   stripeCustomerId: text("stripe_customer_id"),
   stripeSubscriptionId: text("stripe_subscription_id"),
-  subscribed: boolean("subscribed"),
+  subscribed: boolean("subscribed").default(false),
 });

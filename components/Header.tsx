@@ -9,6 +9,7 @@ import {
 import Image from "next/image";
 import { Button } from "./ui/button";
 import HeaderMenu from "./HeaderMenu";
+
 export default function Header() {
   return (
     <header className="sticky inset-x-0 top-0 z-30 w-full transition-all">
@@ -18,12 +19,17 @@ export default function Header() {
           <div className="flex justify-center">
             <SignedOut>
               <SignInButton>
-                <Button className="bg-black">Sign In</Button>
+                <span className="bg-black text-white px-4 py-2 rounded-md cursor-pointer">
+                  Sign In
+                </span>
               </SignInButton>
               <SignUpButton>
-                <Button className="bg-black ml-2">Sign Up</Button>
+                <span className="bg-black text-white px-4 py-2 rounded-md cursor-pointer ml-2">
+                  Sign Up
+                </span>
               </SignUpButton>
             </SignedOut>
+
             <SignedIn>
               <HeaderMenu />
               <UserButton />
