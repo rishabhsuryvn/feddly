@@ -1,16 +1,10 @@
 import { monthlyPlanId, yearlyPlanId } from "@/lib/payment";
 import SubscribeButton from "../SubscribeButton";
+type tParams = Promise<{ plan: string[] }>;
+const page = async (props: { params: tParams }) => {
+  const { plan } = await props.params;
 
-const page = ({
-  searchParams,
-}: {
-  searchParams: {
-    plan: string;
-  };
-}) => {
-  const { plan } = searchParams;
-
-  const planId = plan === "monthly" ? monthlyPlanId : yearlyPlanId;
+  const planId = plan.includes("monthly") ? monthlyPlanId : yearlyPlanId;
 
   return (
     <div className="flex border p-4 rounded-md flex-col">
