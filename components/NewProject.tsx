@@ -46,7 +46,7 @@ export default function NewProject() {
             <Textarea
               name="description"
               id="description"
-              placeholder="Description (optional)"
+              placeholder="Description"
             />
           </div>
           <SubmitButton />
