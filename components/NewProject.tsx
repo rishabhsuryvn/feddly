@@ -49,7 +49,7 @@ export default function NewProject() {
               placeholder="Description (optional)"
             />
           </div>
-          <SubmitButton />{" "}
+          <SubmitButton />
         </form>
       </DialogContent>
     </Dialog>

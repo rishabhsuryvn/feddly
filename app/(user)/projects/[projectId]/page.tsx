@@ -5,18 +5,18 @@ import { ChevronLeft, Code, Globe } from "lucide-react";
 import Link from "next/link";
 import Table from "@/components/Table";
 const page = async ({ params }: any) => {
-  const { projectId } = params;
+  const projectId = (await params).projectId;
   if (!projectId) return <div>Invalid Project Id</div>;
 
   const projects = await db.query.projects.findMany({
-    where: eq(dbProjects.id, parseInt(projectId)),
+    where: eq(dbProjects.id, projectId),
     with: {
       feedbacks: true,
     },
   });
 
   const project = projects[0];
-
+  console.log(project);
   return (
     <div>
       <div>

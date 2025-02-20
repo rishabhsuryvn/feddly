@@ -14,12 +14,12 @@ const page = async ({ params }: any) => {
       </p>
       <div className="bg-blue-950 p-6 rounded-md mt-6 relative">
         <code className=" text-white">
-          {`<my-widget project-id="${projectId}"></my-widget>`}
+          {`<feddly project-id="${projectId}"></feddly>`}
           <br />
           {`<script src="${process.env.WIDGET_URL}/widget.umd.js"></script>`}
         </code>
         <CopyButton
-          text={`<my-widget project-id="${projectId}"></my-widget>\n<script src="${process.env.WIDGET_URL}/widget.umd.js"></script>`}
+          text={`<feddly project-id="${projectId}"></feddly>\n<script src="${process.env.WIDGET_URL}/widget.umd.js"></script>`}
         />
       </div>
     </div>
