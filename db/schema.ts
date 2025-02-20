@@ -7,16 +7,8 @@ export const projects = pgTable("projects", {
   name: text("name").notNull(),
   description: text("description").notNull(),
   url: text("url").notNull(),
-  userId: varchar("user_id").notNull().unique(),
+  userId: varchar("user_id").notNull(),
 });
-
-export const projectsRelations = relations(projects, ({ many, one }) => ({
-  feedbacks: many(feedbacks),
-  user: one(subscriptions, {
-    fields: [projects.userId],
-    references: [subscriptions.userId],
-  }),
-}));
 
 export const feedbacks = pgTable("feedbacks", {
   id: uuid("id").default(gen_uuid()).primaryKey(),
@@ -36,15 +28,9 @@ export const feedbacksRelations = relations(feedbacks, ({ one }) => ({
 
 export const subscriptions = pgTable("subscriptions", {
   id: uuid("id").default(gen_uuid()).primaryKey(),
-  userId: varchar("user_id").notNull().references(() => projects.userId),
+  userId: varchar("user_id").notNull(),
   stripeCustomerId: text("stripe_customer_id"),
   stripeSubscriptionId: text("stripe_subscription_id"),
   subscribed: boolean("subscribed").default(false),
 });
 
-export const subscriptionsRelations = relations(subscriptions, ({ one }) => ({
-  projects: one(projects, {
-    fields: [subscriptions.userId],
-    references: [projects.userId],
-  }),
-}));
